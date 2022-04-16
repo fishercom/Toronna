@@ -1,4 +1,5 @@
 ﻿using System;
+using Ardalis.GuardClauses;
 using Toronna.Application.Interfaces;
 using Toronna.Domain.Entities;
 using Toronna.Domain.Interfaces.Repositories;
@@ -7,45 +8,59 @@ namespace Toronna.Application.Services;
 
 public class SchemaService : IBaseService<Schema, long>
 {
-    private readonly IBaseRepository<Schema, long> repository;
-    public SchemaService(IBaseRepository<Schema, long> _repository)
+    private readonly IBaseRepository<Schema, long> repSchema;
+    private readonly IBaseRepository<Field, long> repField;
+    public SchemaService(
+        IBaseRepository<Schema, long> _repSchema,
+        IBaseRepository<Field, long> _repField
+        )
     {
-        repository = _repository;
+        repSchema = _repSchema;
+        repField = _repField;
     }
 
     public Schema Add(Schema Entity)
     {
-        //throw new NotImplementedException();
+        Guard.Against.Null(Entity, nameof(Entity));
 
-        Schema results = repository.Add(Entity);
-        repository.SaveAll();
+        Schema results = repSchema.Add(Entity);
+
+        Entity.Fields.ForEach(field =>
+        {
+            field.SchemaId = results.Id;
+            repField.Add(field);
+        });
+
+        repSchema.SaveAll();
+
+        return results;
+    }
+
+    public Schema Edit(Schema Entity)
+    {
+        Guard.Against.Null(Entity, nameof(Entity));
+
+        Schema results = repSchema.Edit(Entity);
+        repSchema.SaveAll();
 
         return results;
     }
 
     public void Delete(long EntityId)
     {
-        throw new NotImplementedException();
-    }
-
-    public Schema Edit(Schema Entity)
-    {
-        throw new NotImplementedException();
+        repSchema.Delete(EntityId);
+        repSchema.SaveAll();
     }
 
     public Schema Find(long EntityId)
     {
-        throw new NotImplementedException();
+        return repSchema.Find(EntityId);
     }
 
     public List<Schema> List()
     {
-        throw new NotImplementedException();
+        return repSchema.List();
     }
 
-    public void SaveAll()
-    {
-        throw new NotImplementedException();
-    }
 }
 

@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="Interfaces\" />
     <None Remove="Services\" />
+    <None Remove="Ardalis.GuardClauses" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -17,5 +18,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Toronna.Domain\Toronna.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" Version="4.0.1" />
   </ItemGroup>
 </Project>
