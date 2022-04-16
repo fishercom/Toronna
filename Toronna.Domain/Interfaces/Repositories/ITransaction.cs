@@ -1,4 +1,4 @@
-﻿namespace Toronna.Domain.Interfases.Repositories;
+﻿namespace Toronna.Domain.Interfaces.Repositories;
 
 public interface ITransaction
 {

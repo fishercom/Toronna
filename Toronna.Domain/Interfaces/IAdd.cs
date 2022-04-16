@@ -1,4 +1,4 @@
-﻿namespace Toronna.Domain.Interfases;
+﻿namespace Toronna.Domain.Interfaces;
 
 public interface IAdd<TEntity>
 {
