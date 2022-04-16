@@ -10,10 +10,12 @@
     <None Remove="CMS\" />
     <None Remove="ValueObjects\" />
     <None Remove="Interfases\" />
+    <None Remove="Interfases\Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="ValueObjects\" />
     <Folder Include="Interfases\" />
+    <Folder Include="Interfases\Repositories\" />
   </ItemGroup>
 </Project>
