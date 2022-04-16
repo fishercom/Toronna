@@ -1,6 +1,10 @@
-﻿namespace Toronna.Domain.Entities;
+﻿using Toronna.Domain.ValueObjects;
 
-public class Form : BaseEntity
+namespace Toronna.Domain.Entities;
+
+public class Fields : BaseEntity
 {
-    public string? Name { get; set; }
+    public string Name { get; set; }
+    public Alias Alias { get; set; }
+
 }

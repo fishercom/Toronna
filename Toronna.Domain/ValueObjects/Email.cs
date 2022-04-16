@@ -2,14 +2,14 @@
 
 public class Email
 {
-    private readonly string _email;
-    public Email(string email)
+    private readonly string _value;
+    public Email(string value)
     {
-        _email = email;
+        _value = value;
     }
 
     public string Value()
     {
-        return _email;
+        return _value;
     }
 }

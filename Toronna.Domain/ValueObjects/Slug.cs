@@ -1,9 +1,9 @@
 ﻿namespace Toronna.Domain.ValueObjects;
 
-public class Alias
+public class Slug
 {
     private readonly string _value;
-    public Alias(string value)
+    public Slug(string value)
     {
         _value = value;
     }
