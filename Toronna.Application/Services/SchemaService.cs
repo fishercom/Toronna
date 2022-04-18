@@ -3,16 +3,17 @@ using Ardalis.GuardClauses;
 using Toronna.Application.Interfaces;
 using Toronna.Domain.Entities;
 using Toronna.Domain.Interfaces.Repositories;
+using Toronna.Domain.ValueObjects;
 
 namespace Toronna.Application.Services;
 
-public class SchemaService : IBaseService<Schema, long>
+public class SchemaService : IBaseService<Schema, GenericId>
 {
-    private readonly IBaseRepository<Schema, long> repSchema;
-    private readonly IBaseRepository<Field, long> repField;
+    private readonly IBaseRepository<Schema, GenericId> repSchema;
+    private readonly IBaseRepository<Field, GenericId> repField;
     public SchemaService(
-        IBaseRepository<Schema, long> _repSchema,
-        IBaseRepository<Field, long> _repField
+        IBaseRepository<Schema, GenericId> _repSchema,
+        IBaseRepository<Field, GenericId> _repField
         )
     {
         repSchema = _repSchema;
@@ -46,13 +47,13 @@ public class SchemaService : IBaseService<Schema, long>
         return results;
     }
 
-    public void Delete(long EntityId)
+    public void Delete(GenericId EntityId)
     {
         repSchema.Delete(EntityId);
         repSchema.SaveAll();
     }
 
-    public Schema Find(long EntityId)
+    public Schema Find(GenericId EntityId)
     {
         return repSchema.Find(EntityId);
     }
