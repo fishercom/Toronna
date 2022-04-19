@@ -14,7 +14,7 @@ public class Post : BaseEntity
     public Schema Schema { get; set; }
     public Post? Parent { get; set; }
 
-    public List<Metadata> Metadata { get; set; }
+    public List<PostMeta> PostMeta { get; set; }
     public List<Post> Children { get; set; }
 
 }

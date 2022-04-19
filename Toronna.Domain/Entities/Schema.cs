@@ -16,10 +16,6 @@ public class Schema : BaseEntity
     public List<Post> Posts { get; set; }
     public List<Field> Fields { get; set; }
 
-    public Schema(Site site)
-    {
-        Site = site;
-    }
 }
 
 

@@ -2,7 +2,7 @@
 
 namespace Toronna.Domain.Entities;
 
-public class Metadata : BaseEntity
+public class PostMeta : BaseEntity
 {
     public GenericId PostId { get; set; }
     public GenericId FieldId { get; set; }
