@@ -20,13 +20,13 @@ public class SchemaService : IBaseService<Schema, GenericId>
         repField = _repField;
     }
 
-    public Schema Add(Schema Entity)
+    public Schema Add(Schema entity)
     {
-        Guard.Against.Null(Entity, nameof(Entity));
+        Guard.Against.Null(entity, nameof(entity));
 
-        Schema results = repSchema.Add(Entity);
+        Schema results = repSchema.Add(entity);
 
-        Entity.Fields.ForEach(field =>
+        entity.Fields.ForEach(field =>
         {
             field.SchemaId = results.Id;
             repField.Add(field);
@@ -37,25 +37,25 @@ public class SchemaService : IBaseService<Schema, GenericId>
         return results;
     }
 
-    public Schema Edit(Schema Entity)
+    public Schema Edit(Schema entity)
     {
-        Guard.Against.Null(Entity, nameof(Entity));
+        Guard.Against.Null(entity, nameof(entity));
 
-        Schema results = repSchema.Edit(Entity);
+        Schema results = repSchema.Edit(entity);
         repSchema.SaveAll();
 
         return results;
     }
 
-    public void Delete(GenericId EntityId)
+    public void Delete(GenericId entityId)
     {
-        repSchema.Delete(EntityId);
+        repSchema.Delete(entityId);
         repSchema.SaveAll();
     }
 
-    public Schema Find(GenericId EntityId)
+    public Schema Find(GenericId entityId)
     {
-        return repSchema.Find(EntityId);
+        return repSchema.Find(entityId);
     }
 
     public List<Schema> List()

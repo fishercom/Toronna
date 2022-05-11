@@ -2,5 +2,5 @@
 
 public interface IAdd<TEntity>
 {
-    TEntity Add(TEntity Entity);
+    TEntity Add(TEntity entity);
 }

@@ -13,14 +13,20 @@
     <None Remove="Pomelo.EntityFrameworkCore.MySql" />
     <None Remove="MySql.Data" />
     <None Remove="Config\" />
+    <None Remove="Context\" />
+    <None Remove="Context\Repository\" />
+    <None Remove="Ardalis.GuardClauses" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4" />
     <PackageReference Include="MySql.Data.EntityFramework" Version="8.0.28" />
-    <PackageReference Include="MySql.Data" Version="8.0.28" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="6.0.1" />
+    <PackageReference Include="Ardalis.GuardClauses" Version="4.0.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Config\" />
+    <Folder Include="Context\" />
+    <Folder Include="Context\Repository\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Toronna.Domain\Toronna.Domain.csproj" />

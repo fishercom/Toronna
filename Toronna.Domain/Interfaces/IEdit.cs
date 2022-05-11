@@ -2,6 +2,6 @@
 
 public interface IEdit<TEntity>
 {
-    TEntity Edit(TEntity Entity);
+    TEntity Edit(TEntity entity);
 }
 

@@ -8,6 +8,8 @@ public class FormConfig : IEntityTypeConfiguration<Form>
 {
     public void Configure(EntityTypeBuilder<Form> builder)
     {
+        builder.HasKey(c => c.SiteId);
+
         builder.Property(p => p.Name)
             .HasMaxLength(100)
             .IsRequired();

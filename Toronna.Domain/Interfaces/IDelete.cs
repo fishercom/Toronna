@@ -2,6 +2,6 @@
 
 public interface IDelete<TEntityId>
 {
-    void Delete(TEntityId EntityId);
+    void Delete(TEntityId entityId);
 }
 
