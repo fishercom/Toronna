@@ -12,7 +12,10 @@ public class PostConfig : IEntityTypeConfiguration<Post>
         builder.HasKey(c => c.ParentId);
 
         builder.Property(p => p.Title)
-            .HasMaxLength(100)
+            .HasMaxLength(255)
+            .IsRequired();
+        builder.Property(p => p.Slug)
+            .HasMaxLength(512)
             .IsRequired();
     }
 }

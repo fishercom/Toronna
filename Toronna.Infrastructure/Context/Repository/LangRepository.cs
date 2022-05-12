@@ -6,47 +6,47 @@ using Ardalis.GuardClauses;
 
 namespace Toronna.Infrastructure.Context.Repository;
 
-public class SiteRepository : IBaseRepository<Site, GenericId>
+public class LangRepository : IBaseRepository<Lang, GenericId>
 {
     private readonly CmsContext _db;
 
-    public SiteRepository(CmsContext db)
+    public LangRepository(CmsContext db)
     {
         _db = db;
     }
 
-    public Site Add(Site entity)
+    public Lang Add(Lang entity)
     {
-        _db.Site.Add(entity);
+        _db.Lang.Add(entity);
         return entity;
     }
 
     public void Delete(GenericId entityId)
     {
         var item = Find(entityId);
-        _db.Site.Remove(item);
+        _db.Lang.Remove(item);
     }
 
-    public Site Edit(Site entity)
+    public Lang Edit(Lang entity)
     {
         var item = Find(entity.Id);
         item.Name = entity.Name;
-        item.Url = entity.Url;
+        item.Slug = entity.Slug;
         _db.Entry(item).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         return item;
     }
 
-    public Site Find(GenericId entityId)
+    public Lang Find(GenericId entityId)
     {
-        var item = _db.Site.Where(c => c.Id == entityId).FirstOrDefault();
+        var item = _db.Lang.Where(c => c.Id == entityId).FirstOrDefault();
         Guard.Against.Null(item, nameof(item));
 
         return item;
     }
 
-    public List<Site> List()
+    public List<Lang> List()
     {
-        var list = _db.Site.ToList();
+        var list = _db.Lang.ToList();
 
         return list;
     }

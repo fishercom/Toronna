@@ -6,47 +6,49 @@ using Ardalis.GuardClauses;
 
 namespace Toronna.Infrastructure.Context.Repository;
 
-public class SiteRepository : IBaseRepository<Site, GenericId>
+public class SchemaRepository : IBaseRepository<Schema, GenericId>
 {
     private readonly CmsContext _db;
 
-    public SiteRepository(CmsContext db)
+    public SchemaRepository(CmsContext db)
     {
         _db = db;
     }
 
-    public Site Add(Site entity)
+    public Schema Add(Schema entity)
     {
-        _db.Site.Add(entity);
+        _db.Schema.Add(entity);
         return entity;
     }
 
     public void Delete(GenericId entityId)
     {
         var item = Find(entityId);
-        _db.Site.Remove(item);
+        _db.Schema.Remove(item);
     }
 
-    public Site Edit(Site entity)
+    public Schema Edit(Schema entity)
     {
         var item = Find(entity.Id);
+        item.ParentId = entity.ParentId;
+        item.SiteId = entity.SiteId;
         item.Name = entity.Name;
-        item.Url = entity.Url;
+        item.Slug = entity.Slug;
         _db.Entry(item).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         return item;
     }
 
-    public Site Find(GenericId entityId)
+    public Schema Find(GenericId entityId)
     {
-        var item = _db.Site.Where(c => c.Id == entityId).FirstOrDefault();
+        var item = _db.Schema.Where(c => c.Id == entityId).FirstOrDefault();
         Guard.Against.Null(item, nameof(item));
 
         return item;
     }
 
-    public List<Site> List()
+    public List<Schema> List()
     {
-        var list = _db.Site.ToList();
+        var list = _db.Schema.ToList();
 
         return list;
     }

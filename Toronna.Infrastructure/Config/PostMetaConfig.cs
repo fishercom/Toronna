@@ -12,7 +12,7 @@ public class PostMetaConfig : IEntityTypeConfiguration<PostMeta>
         builder.HasKey(c => c.FieldId);
 
         builder.Property(p => p.Value)
-            .HasMaxLength(100)
+            .HasMaxLength(1024)
             .IsRequired();
     }
 }

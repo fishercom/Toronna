@@ -18,8 +18,8 @@
     <None Remove="Ardalis.GuardClauses" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4" />
-    <PackageReference Include="MySql.Data.EntityFramework" Version="8.0.28" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
+    <PackageReference Include="MySql.Data.EntityFramework" Version="8.0.29" />
     <PackageReference Include="MySql.EntityFrameworkCore" Version="6.0.1" />
     <PackageReference Include="Ardalis.GuardClauses" Version="4.0.1" />
   </ItemGroup>

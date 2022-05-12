@@ -6,8 +6,8 @@ public class Schema : BaseEntity
 {
     public GenericId SiteId { get; set; }
     public GenericId? ParentId { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public Alias Alias { get; set; }
+    public string Name { get; set; }
+    public Slug Slug { get; set; }
     public PostType PostType { get; set; }
 
     public Schema? Parent { get; set; }
@@ -17,5 +17,3 @@ public class Schema : BaseEntity
     public List<Field> Fields { get; set; }
 
 }
-
-

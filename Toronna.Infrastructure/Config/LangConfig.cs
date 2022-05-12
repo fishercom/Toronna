@@ -4,12 +4,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Toronna.Infrastructure.Config;
 
-public class FormConfig : IEntityTypeConfiguration<Form>
+public class LangConfig : IEntityTypeConfiguration<Lang>
 {
-    public void Configure(EntityTypeBuilder<Form> builder)
+    public void Configure(EntityTypeBuilder<Lang> builder)
     {
-        builder.HasKey(c => c.SiteId);
-
         builder.Property(p => p.Name)
             .HasMaxLength(100)
             .IsRequired();

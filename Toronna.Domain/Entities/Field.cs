@@ -8,7 +8,7 @@ public class Field : BaseEntity
 
     public string Name { get; set; } = string.Empty;
     public string Attributes { get; set; } = string.Empty;
-    public Alias Alias { get; set; }
+    public Slug Slug { get; set; }
     public FieldType FieldType { get; set; }
 
     public Schema Schema { get; set; }
