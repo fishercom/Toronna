@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-using Toronna.Domain;
+using Toronna.Domain.Entities;
 using Toronna.Application.Services;
 using Toronna.Infrastructure.Context;
 using Toronna.Infrastructure.Context.Repository;
+using Toronna.Domain.ValueObjects;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,34 +25,46 @@ public class SchemaController : Controller
 
     // GET: api/values
     [HttpGet]
-    public IEnumerable<string> Get()
+    public ActionResult<List<Schema>> Get()
     {
-        return new string[] { "value1", "value2" };
+        var service = CreateService();
+        return Ok(service.List());
     }
 
     // GET api/values/5
     [HttpGet("{id}")]
-    public string Get(int id)
+    public ActionResult<Schema> Get(GenericId id)
     {
-        return "value";
+        var service = CreateService();
+        return Ok(service.Find(id));
     }
 
     // POST api/values
     [HttpPost]
-    public void Post([FromBody]string value)
+    public ActionResult Post([FromBody] Schema schema)
     {
+        var service = CreateService();
+        service.Add(schema);
+        return Ok("Added Successfully!");
     }
 
     // PUT api/values/5
     [HttpPut("{id}")]
-    public void Put(int id, [FromBody]string value)
+    public ActionResult Put(GenericId id, [FromBody] Schema schema)
     {
+        var service = CreateService();
+        schema.Id = id;
+        service.Edit(schema);
+        return Ok("Updated Successfully!");
     }
 
     // DELETE api/values/5
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public ActionResult Delete(GenericId id)
     {
+        var service = CreateService();
+        service.Delete(id);
+        return Ok("Deleted Successfully!");
     }
 }
 
