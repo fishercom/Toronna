@@ -13,7 +13,7 @@ public class Schema : BaseEntity
     public Schema? Parent { get; set; }
     public Site Site { get; set; }
 
-    public List<Post> Posts { get; set; }
+    public List<Article> Articles { get; set; }
     public List<Field> Fields { get; set; }
 
 }

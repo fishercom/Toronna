@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Toronna.Infrastructure.Config;
 
-public class PostConfig : IEntityTypeConfiguration<Post>
+public class ArticleConfig : IEntityTypeConfiguration<Article>
 {
-    public void Configure(EntityTypeBuilder<Post> builder)
+    public void Configure(EntityTypeBuilder<Article> builder)
     {
-        builder.HasKey(c => c.SchemaId);
+        builder.HasKey(c => c.ArticleId);
         builder.HasKey(c => c.ParentId);
 
         builder.Property(p => p.Title)

@@ -13,8 +13,7 @@ public class CmsContext : DbContext
     public DbSet<Schema> Schema { set; get; }
     public DbSet<Field> Field { set; get; }
     public DbSet<Lang> Lang { set; get; }
-    public DbSet<Post> Post { set; get; }
-    public DbSet<PostMeta> PostMeta { set; get; }
+    public DbSet<Article> Article { set; get; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
@@ -28,7 +27,6 @@ public class CmsContext : DbContext
         builder.ApplyConfiguration(new SchemaConfig());
         builder.ApplyConfiguration(new FieldConfig());
         builder.ApplyConfiguration(new LangConfig());
-        builder.ApplyConfiguration(new PostConfig());
-        builder.ApplyConfiguration(new PostMetaConfig());
+        builder.ApplyConfiguration(new ArticleConfig());
     }
 }

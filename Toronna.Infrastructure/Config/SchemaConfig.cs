@@ -19,7 +19,7 @@ public class SchemaConfig : IEntityTypeConfiguration<Schema>
             .IsRequired();
 
         builder
-            .HasMany(c=>c.Posts)
+            .HasMany(c=>c.Articles)
             .WithOne(c=>c.Schema);
     }
 }

@@ -6,51 +6,52 @@ using Ardalis.GuardClauses;
 
 namespace Toronna.Infrastructure.Context.Repository;
 
-public class PostRepository : IBaseRepository<Post, GenericId>
+public class ArticleRepository : IBaseRepository<Article, GenericId>
 {
     private readonly CmsContext _db;
 
-    public PostRepository(CmsContext db)
+    public ArticleRepository(CmsContext db)
     {
         _db = db;
     }
 
-    public Post Add(Post entity)
+    public Article Add(Article entity)
     {
-        _db.Post.Add(entity);
+        _db.Article.Add(entity);
         return entity;
     }
 
     public void Delete(GenericId entityId)
     {
         var item = Find(entityId);
-        _db.Post.Remove(item);
+        _db.Article.Remove(item);
     }
 
-    public Post Edit(Post entity)
+    public Article Edit(Article entity)
     {
         var item = Find(entity.Id);
-        item.SchemaId = entity.SchemaId;
+        item.ArticleId = entity.ArticleId;
         item.LangId = entity.LangId;
         item.ParentId = entity.ParentId;
         item.Title = entity.Title;
         item.Content = entity.Content;
+        item.Metadata = entity.Metadata;
         item.Slug = entity.Slug;
         _db.Entry(item).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         return item;
     }
 
-    public Post Find(GenericId entityId)
+    public Article Find(GenericId entityId)
     {
-        var item = _db.Post.Where(c => c.Id == entityId).FirstOrDefault();
+        var item = _db.Article.Where(c => c.Id == entityId).FirstOrDefault();
         Guard.Against.Null(item, nameof(item));
 
         return item;
     }
 
-    public List<Post> List()
+    public List<Article> List()
     {
-        var list = _db.Post.ToList();
+        var list = _db.Article.ToList();
 
         return list;
     }
