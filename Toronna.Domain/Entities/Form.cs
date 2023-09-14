@@ -1,12 +1,10 @@
-﻿using Toronna.Domain.ValueObjects;
-
-namespace Toronna.Domain.Entities;
+﻿namespace Toronna.Domain.Entities;
 
 public class Form : BaseEntity
 {
-    public GenericId SiteId { get; set; }
+    public Guid SiteId { get; set; }
     public string Name { get; set; }
-    public Slug Slug { get; set; }
+    public string Slug { get; set; }
 
     public Site Site { get; set; }
 }

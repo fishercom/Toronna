@@ -1,12 +1,11 @@
 ﻿using Toronna.Domain.Entities;
-using Toronna.Domain.ValueObjects;
 using Toronna.Domain.Interfaces.Repositories;
 
 using Ardalis.GuardClauses;
 
 namespace Toronna.Infrastructure.Context.Repository;
 
-public class ArticleRepository : IBaseRepository<Article, GenericId>
+public class ArticleRepository : IBaseRepository<Article, Guid>
 {
     private readonly CmsContext _db;
 
@@ -21,7 +20,7 @@ public class ArticleRepository : IBaseRepository<Article, GenericId>
         return entity;
     }
 
-    public void Delete(GenericId entityId)
+    public void Delete(Guid entityId)
     {
         var item = Find(entityId);
         _db.Article.Remove(item);
@@ -30,9 +29,6 @@ public class ArticleRepository : IBaseRepository<Article, GenericId>
     public Article Edit(Article entity)
     {
         var item = Find(entity.Id);
-        item.ArticleId = entity.ArticleId;
-        item.LangId = entity.LangId;
-        item.ParentId = entity.ParentId;
         item.Title = entity.Title;
         item.Content = entity.Content;
         item.Metadata = entity.Metadata;
@@ -41,7 +37,7 @@ public class ArticleRepository : IBaseRepository<Article, GenericId>
         return item;
     }
 
-    public Article Find(GenericId entityId)
+    public Article Find(Guid entityId)
     {
         var item = _db.Article.Where(c => c.Id == entityId).FirstOrDefault();
         Guard.Against.Null(item, nameof(item));

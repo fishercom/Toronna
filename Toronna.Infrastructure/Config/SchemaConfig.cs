@@ -8,8 +8,7 @@ public class SchemaConfig : IEntityTypeConfiguration<Schema>
 {
     public void Configure(EntityTypeBuilder<Schema> builder)
     {
-        builder.HasKey(c => c.ParentId);
-        builder.HasKey(c => c.SiteId);
+        builder.HasKey(c => c.Id);
 
         builder.Property(p => p.Name)
             .HasMaxLength(100)

@@ -1,14 +1,18 @@
-﻿using Toronna.Domain.ValueObjects;
-
-namespace Toronna.Domain.Entities;
+﻿namespace Toronna.Domain.Entities;
 
 public class Schema : BaseEntity
 {
-    public GenericId SiteId { get; set; }
-    public GenericId? ParentId { get; set; }
+    public Guid SiteId { get; set; }
+    public Guid? ParentId { get; set; }
     public string Name { get; set; }
-    public Slug Slug { get; set; }
-    public PostType PostType { get; set; }
+    public string Slug { get; set; }
+    public enum PostType
+    {
+        Page,
+        Post,
+        Form,
+        Product
+    }
 
     public Schema? Parent { get; set; }
     public Site Site { get; set; }

@@ -1,21 +1,20 @@
-﻿using Toronna.Domain.ValueObjects;
-
-namespace Toronna.Domain.Entities;
+﻿namespace Toronna.Domain.Entities;
 
 public class Article : BaseEntity
 {
-    public GenericId ArticleId { get; set; }
-    public GenericId LangId { get; set; }
-    public GenericId? ParentId { get; set; }
+    public Guid? ParentId { get; set; }
+    public Guid SchemaId { get; set; }
+    public Guid LangId { get; set; }
 
     public string Title { get; set; }
     public string Content { get; set; }
     public string Metadata { get; set; }
-    public Slug Slug { get; set; }
+    public string Slug { get; set; }
+    public bool? Visible { get; set; }
 
+    public Article? Parent { get; set; }
     public Schema Schema { get; set; }
     public Lang Lang { get; set; }
-    public Article? Parent { get; set; }
 
     public List<Article> Children { get; set; }
 }

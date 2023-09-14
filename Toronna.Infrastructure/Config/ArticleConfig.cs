@@ -8,8 +8,7 @@ public class ArticleConfig : IEntityTypeConfiguration<Article>
 {
     public void Configure(EntityTypeBuilder<Article> builder)
     {
-        builder.HasKey(c => c.ArticleId);
-        builder.HasKey(c => c.ParentId);
+        builder.HasKey(c => c.Id);
 
         builder.Property(p => p.Title)
             .HasMaxLength(255)

@@ -8,7 +8,7 @@ public class FieldConfig : IEntityTypeConfiguration<Field>
 {
     public void Configure(EntityTypeBuilder<Field> builder)
     {
-        builder.HasKey(c => c.SchemaId);
+        builder.HasIndex(c => c.SchemaId);
 
         builder.Property(p => p.Name)
             .HasMaxLength(100)

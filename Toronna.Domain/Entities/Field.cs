@@ -1,15 +1,23 @@
-﻿using Toronna.Domain.ValueObjects;
-
-namespace Toronna.Domain.Entities;
+﻿namespace Toronna.Domain.Entities;
 
 public class Field : BaseEntity
 {
-    public GenericId SchemaId { get; set; }
+    public Guid SchemaId { get; set; }
 
     public string Name { get; set; } = string.Empty;
     public string Attributes { get; set; } = string.Empty;
-    public Slug Slug { get; set; }
-    public FieldType FieldType { get; set; }
+    public string Slug { get; set; }
+    public enum FieldType {
+        Text,
+        Numeric,
+        Date,
+        Email,
+        Select,
+        Radio,
+        Checkbox,
+        Url,
+        Html,
+    }
 
     public Schema Schema { get; set; }
 
