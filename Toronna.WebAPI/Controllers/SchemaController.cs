@@ -4,7 +4,6 @@ using Toronna.Domain.Entities;
 using Toronna.Application.Services;
 using Toronna.Infrastructure.Context;
 using Toronna.Infrastructure.Context.Repository;
-using Toronna.Domain.ValueObjects;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -33,7 +32,7 @@ public class SchemaController : Controller
 
     // GET api/values/5
     [HttpGet("{id}")]
-    public ActionResult<Schema> Get(GenericId id)
+    public ActionResult<Schema> Get(Guid id)
     {
         var service = CreateService();
         return Ok(service.Find(id));
@@ -50,7 +49,7 @@ public class SchemaController : Controller
 
     // PUT api/values/5
     [HttpPut("{id}")]
-    public ActionResult Put(GenericId id, [FromBody] Schema schema)
+    public ActionResult Put(Guid id, [FromBody] Schema schema)
     {
         var service = CreateService();
         schema.Id = id;
@@ -60,7 +59,7 @@ public class SchemaController : Controller
 
     // DELETE api/values/5
     [HttpDelete("{id}")]
-    public ActionResult Delete(GenericId id)
+    public ActionResult Delete(Guid id)
     {
         var service = CreateService();
         service.Delete(id);

@@ -4,7 +4,6 @@ using Toronna.Domain.Entities;
 using Toronna.Application.Services;
 using Toronna.Infrastructure.Context;
 using Toronna.Infrastructure.Context.Repository;
-using Toronna.Domain.ValueObjects;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -32,7 +31,7 @@ public class ArticleController : Controller
 
     // GET api/values/5
     [HttpGet("{id}")]
-    public ActionResult<Article> Get(GenericId id)
+    public ActionResult<Article> Get(Guid id)
     {
         var service = CreateService();
         return Ok(service.Find(id));
@@ -49,7 +48,7 @@ public class ArticleController : Controller
 
     // PUT api/values/5
     [HttpPut("{id}")]
-    public ActionResult Put(GenericId id, [FromBody] Article article)
+    public ActionResult Put(Guid id, [FromBody] Article article)
     {
         var service = CreateService();
         article.Id = id;
@@ -59,7 +58,7 @@ public class ArticleController : Controller
 
     // DELETE api/values/5
     [HttpDelete("{id}")]
-    public ActionResult Delete(GenericId id)
+    public ActionResult Delete(Guid id)
     {
         var service = CreateService();
         service.Delete(id);

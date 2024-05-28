@@ -3,15 +3,14 @@ using Ardalis.GuardClauses;
 using Toronna.Application.Interfaces;
 using Toronna.Domain.Entities;
 using Toronna.Domain.Interfaces.Repositories;
-using Toronna.Domain.ValueObjects;
 
 namespace Toronna.Application.Services;
 
-public class ArticleService : IBaseService<Article, GenericId>
+public class ArticleService : IBaseService<Article, Guid>
 {
-    private readonly IBaseRepository<Article, GenericId> repArticle;
+    private readonly IBaseRepository<Article, Guid> repArticle;
     public ArticleService(
-        IBaseRepository<Article, GenericId> _repArticle
+        IBaseRepository<Article, Guid> _repArticle
         )
     {
         repArticle = _repArticle;
@@ -38,13 +37,13 @@ public class ArticleService : IBaseService<Article, GenericId>
         return results;
     }
 
-    public void Delete(GenericId entityId)
+    public void Delete(Guid entityId)
     {
         repArticle.Delete(entityId);
         repArticle.SaveAll();
     }
 
-    public Article Find(GenericId entityId)
+    public Article Find(Guid entityId)
     {
         return repArticle.Find(entityId);
     }
